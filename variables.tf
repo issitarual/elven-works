@@ -65,13 +65,7 @@ variable "secret_key" {
   sensitive = true
 }
 
-# EFS variables
-variable "efs_mount_point" {}
-variable "private_key_location" {}
-variable "key_name" {}
-
 # RDS variables
-
 variable "rds_db_username" {
   type        = string
   default     = "wordpress"
@@ -80,7 +74,7 @@ variable "rds_db_username" {
 
 variable "rds_db_password" {
   type        = string
-  default     = "12345"
+  default     = "12345678"
   sensitive   = true
 }
 variable "tags" {

@@ -89,14 +89,14 @@ resource "aws_instance" "wordpress-challenge-server-1" {
   vpc_security_group_ids = [aws_security_group.allow_ssh.id]
   associate_public_ip_address = true
   monitoring                  = true
-  user_data = <<-EOF
-              #!/bin/bash
-              sudo apt update && sudo apt install curl ansible unzip -y
-              cd /tmp
-              wget https://esseeutenhocertezaqueninguemcriou.s3.amazonaws.com/ansible.zip
-              unzip ansible.zip
-              sudo ansible-playbook wordpress.yml
-              EOF
+  # user_data = <<-EOF
+  #             #!/bin/bash
+  #             sudo apt update && sudo apt install curl ansible unzip -y
+  #             cd /tmp
+  #             wget https://esseeutenhocertezaqueninguemcriou.s3.amazonaws.com/ansible.zip
+  #             unzip ansible.zip
+  #             sudo ansible-playbook wordpress.yml
+  #             EOF
   tags = {
     Name = "wordpress_challenge-server-1"
   }
@@ -116,47 +116,47 @@ resource "aws_instance" "wordpress-challenge-server-2" {
   }
 }
 
-# Prometheus
-resource "aws_instance" "prometheus" {
-  ami               = "ami-0f5ee92e2d63afc18"
-  instance_type     = "t2.nano"
-  availability_zone = "us-east-1"
-  user_data = templatefile("${path.module}/cloud_prometheus.conf", {
-    hostname           = "Hostname"
-    # config_bucket_name = var.config_bucket_name
-    password           = "12345"
-    # letsencrypt_email  = var.letsencrypt_email
-  })
-  security_groups      = [aws_security_group.allow_ssh]
+# # Prometheus
+# resource "aws_instance" "prometheus" {
+#   ami               = "ami-0f5ee92e2d63afc18"
+#   instance_type     = "t2.nano"
+#   availability_zone = "us-east-1"
+#   user_data = templatefile("${path.module}/cloud_prometheus.conf", {
+#     hostname           = "Hostname"
+#     # config_bucket_name = var.config_bucket_name
+#     password           = "12345"
+#     # letsencrypt_email  = var.letsencrypt_email
+#   })
+#   security_groups      = [aws_security_group.allow_ssh]
 
-  lifecycle {
-    ignore_changes = [ami]
-  }
+#   lifecycle {
+#     ignore_changes = [ami]
+#   }
 
-  tags = {
-    Name = "monitoring-prometheus"
-  }
+#   tags = {
+#     Name = "monitoring-prometheus"
+#   }
 
-}
+# }
 
-# Grafana
-resource "aws_instance" "instance" {
-  ami               = "ami-0f5ee92e2d63afc18"
-  instance_type     = "t2.nano"
-  availability_zone = "us-east-1"
-  user_data = templatefile("${path.module}/cloud_grafana.conf", {
-    hostname           = "Hostname"
-    # config_bucket_name = var.config_bucket_name
-    password           = "12345"
-    # letsencrypt_email  = var.letsencrypt_email
-  })
-  security_groups      = [aws_security_group.allow_ssh]
+# # Grafana
+# resource "aws_instance" "instance" {
+#   ami               = "ami-0f5ee92e2d63afc18"
+#   instance_type     = "t2.nano"
+#   availability_zone = "us-east-1"
+#   user_data = templatefile("${path.module}/cloud_grafana.conf", {
+#     hostname           = "Hostname"
+#     # config_bucket_name = var.config_bucket_name
+#     password           = "12345"
+#     # letsencrypt_email  = var.letsencrypt_email
+#   })
+#   security_groups      = [aws_security_group.allow_ssh]
 
-  lifecycle {
-    ignore_changes = [ami]
-  }
+#   lifecycle {
+#     ignore_changes = [ami]
+#   }
 
-  tags = {
-    Name = "monitoring-grafana"
-  }
-}
+#   tags = {
+#     Name = "monitoring-grafana"
+#   }
+# }
