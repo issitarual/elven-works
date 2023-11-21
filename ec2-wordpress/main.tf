@@ -89,31 +89,14 @@ resource "aws_instance" "wordpress-challenge-server-1" {
   vpc_security_group_ids = [aws_security_group.allow_ssh.id]
   associate_public_ip_address = true
   monitoring                  = true
-  user_data = <<-EOF
-    #!/bin/bash
-
-    sudo apt update && sudo apt install ansible curl git nano unzip -y
-    cd /tmp
-
-    git clone https://github.com/issitarual/elven-works.git
-
-    # delete the default values
-    rm ./elven-works/ansible/wordpress-challenge/roles/mysql/defaults/main.yml
-
-    tee -a ./elven-works/ansible/wordpress-challenge/roles/mysql/defaults/main.yml << END
-    ---
-    rds_db_host: "${var.rds_db_host}"
-    rds_db_port: "${var.rds_db_port}"
-    rds_db_username: "${var.rds_db_username}"
-    rds_db_password: "${var.rds_db_password}"
-    wordpress_db_name: "${var.wordpress_db_name}"
-    wordpress_db_username: "${var.wordpress_db_username}"
-    wordpress_db_password: "${var.wordpress_db_password}"
-    END
-
-    cp ./elven-works/ansible/wordpress-challenge/roles/mysql/defaults/main.yml ./elven-works/ansible/wordpress-challenge/roles/wordpress/defaults/main.yml
-    sudo ansible-playbook ./elven-works/ansible/wordpress-challenge/wordpress.yml
-    EOF
+  user_data = base64encode(
+    templatefile("setup.sh",
+      {
+        wp_db_name       = aws_db_instance.web.name
+        wp_username      = aws_db_instance.web.username
+        wp_user_password = aws_db_instance.web.password
+        wp_db_host       = aws_db_instance.web.address
+  }))
   tags = {
     Name = "wordpress_challenge-server-1"
   }
