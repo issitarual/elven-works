@@ -77,6 +77,12 @@ variable "rds_db_password" {
   default     = "12345678"
   sensitive   = true
 }
+
+variable "db_name" {
+  type        = string
+  default     = "wordpress"
+  sensitive   = true
+}
 variable "tags" {
   type        = map(string)
   default = {}

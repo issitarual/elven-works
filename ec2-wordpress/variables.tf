@@ -1,2 +1,9 @@
 variable "vpc_wordpress" {}
 variable "subnet_wordpress" {}
+variable "rds_db_username" {}
+variable "rds_db_password" {}
+variable "rds_db_host" {}
+variable "rds_db_port" {}
+variable "wordpress_db_name" {}
+variable "wordpress_db_username" {}
+variable "wordpress_db_password" {}

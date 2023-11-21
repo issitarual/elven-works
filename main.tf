@@ -37,6 +37,13 @@ module "ec2_wordpress" {
 
   vpc_wordpress         = module.vpc_wordpress.vpc_wordpress
   subnet_wordpress      = module.vpc_wordpress.subnet_wordpress_public
+  rds_db_username       = var.rds_db_username
+  rds_db_password       = var.rds_db_password
+  rds_db_host           = module.rds_wordpress.database_endpoint
+  rds_db_port           = module.rds_wordpress.database_port
+  wordpress_db_name     = var.db_name
+  wordpress_db_username = var.rds_db_username
+  wordpress_db_password = var.rds_db_password
 }
 
 module "rds_wordpress" {
