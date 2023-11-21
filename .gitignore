@@ -33,4 +33,4 @@ override.tf.json
 .terraformrc
 terraform.rc
 
-*.csv
+terraform-elven_accessKeys.csv
