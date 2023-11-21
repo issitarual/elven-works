@@ -1,7 +1,7 @@
 ---
 wordpress_db_host: change_me
 wordpress_db_name: wordpress
-wordpress_db_username: admin
+wordpress_db_username: wordpress
 wordpress_db_password: 12345678
 file_system_id: change_me
 aws_region: change_me
