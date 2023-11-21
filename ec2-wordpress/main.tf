@@ -92,10 +92,13 @@ resource "aws_instance" "wordpress-challenge-server-1" {
   user_data = base64encode(
     templatefile("setup.sh",
       {
-        wp_db_name       = aws_db_instance.web.name
-        wp_username      = aws_db_instance.web.username
-        wp_user_password = aws_db_instance.web.password
-        wp_db_host       = aws_db_instance.web.address
+        rds_db_host = var.rds_db_host
+        rds_db_port=var.rds_db_port
+        rds_db_username=var.rds_db_username
+        rds_db_password=var.rds_db_password
+        wordpress_db_name=var.wordpress_db_name
+        wordpress_db_username=var.wordpress_db_username
+        wordpress_db_password=var.wordpress_db_password
   }))
   tags = {
     Name = "wordpress_challenge-server-1"

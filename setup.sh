@@ -9,13 +9,13 @@
 
     tee -a ./bootcamp-sre-elvenworks/ansible/wordpress-aws/roles/mysql-server/defaults/main.yml << END
     ---
-    rds_db_host: "${var.rds_db_host}"
-    rds_db_port: "${var.rds_db_port}"
-    rds_db_username: "${var.rds_db_username}"
-    rds_db_password: "${var.rds_db_password}"
-    wordpress_db_name: "${var.wordpress_db_name}"
-    wordpress_db_username: "${var.wordpress_db_username}"
-    wordpress_db_password: "${var.wordpress_db_password}"
+    rds_db_host: "${rds_db_host}"
+    rds_db_port: "${rds_db_port}"
+    rds_db_username: "${rds_db_username}"
+    rds_db_password: "${rds_db_password}"
+    wordpress_db_name: "${wordpress_db_name}"
+    wordpress_db_username: "${wordpress_db_username}"
+    wordpress_db_password: "${wordpress_db_password}"
     END
 
     cp ./bootcamp-sre-elvenworks/ansible/wordpress-aws/roles/mysql-server/defaults/main.yml ./bootcamp-sre-elvenworks/ansible/wordpress-aws/roles/wordpress/defaults/main.yml
