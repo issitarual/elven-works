@@ -1,0 +1,27 @@
+---
+  - name: instalacao mysql-server
+    apt:
+      pkg:
+      - mysql-server
+      - mysql-client
+      - python3-mysqldb
+      - libmysqlclient-dev
+
+      update_cache: yes
+
+  - name: Criando usuario no banco mysql
+    mysql_user:
+        name: "wpuser"
+        password: "{{ rds_db_password }}"
+        priv: '*.*:ALL'
+        host: "{{ rds_db_host }}"
+        state: present
+
+  - name: Criando database {{ rds_db_username }}
+    mysql_db:
+        name: "{{ rds_db_username }}"
+        login_host: "{{ rds_db_host }}"
+        login_port: "{{ rds_db_port }}"
+        login_user: "{{ rds_db_username }}"
+        login_password: "{{ rds_db_password }}"
+        state: present
