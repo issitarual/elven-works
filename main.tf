@@ -41,7 +41,7 @@ module "ec2_wordpress" {
   rds_db_password       = var.rds_db_password
   rds_db_host           = module.rds_wordpress.database_endpoint
   rds_db_port           = module.rds_wordpress.database_port
-  wordpress_db_name     = var.db_name
+  wordpress_db_name     = var.wordpress_db_name
   wordpress_db_username = var.rds_db_username
   wordpress_db_password = var.rds_db_password
 }

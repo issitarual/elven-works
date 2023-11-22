@@ -78,7 +78,7 @@ variable "rds_db_password" {
   sensitive   = true
 }
 
-variable "db_name" {
+variable "wordpress_db_name" {
   type        = string
   default     = "wordpress"
   sensitive   = true

@@ -1,20 +1,23 @@
----
-# https://docs.ansible.com/ansible/latest/collections/community/mysql/mysql_replication_module.html
-- name: "Install MySQL utils"
-  apt:
-    pkg:
-      - mysql-client
-      - python3-mysqldb
-      - libmysqlclient-dev
-      - python3-pymysql
-    update_cache: yes
-
-- name: "MySQL setup configuration template"
-  template:
-    src: setup-mysql.sh.j2
-    dest: /tmp/setup-mysql.sh
-    mode: 0775
-
 # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/command_module.html
-- name: "Setup MySQL for Wordpress using shell script"
+- name: "Setup MySQL for wpS"
   command: /tmp/setup-mysql.sh
+
+  ---
+  - name: Update the software package repository
+    command: yum update -y
+
+  - name: Install mysql
+    yum:
+      state: present
+      name:
+        - mysql
+        - MySQL-python
+
+  - name: "Create {{ rds_db_username }} database"
+    mysql_db:
+      name: "{{ rds_db_username }}"
+      login_host: "{{ rds_db_host }}"
+      login_port: "{{ rds_db_port }}"
+      login_user: "{{ rds_db_username }}"
+      login_password: "{{ rds_db_password }}"
+      state: present
