@@ -11,7 +11,7 @@
 
   - name: Criando usuario no banco mysql
     mysql_user:
-        name: "wpuser"
+        name: "{{ rds_db_username }}"
         password: "{{ rds_db_password }}"
         priv: '*.*:ALL'
         host: "{{ rds_db_host }}"
