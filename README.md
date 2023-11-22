@@ -15,7 +15,7 @@ Create a server using WordPress on AWS in an automated way and perform Monitorin
 - [x]  Install and configure WordPress with Ansible in EC2
 - [x]  Configure database in another server (RDS)
 - [x]  Create a minimal Monitoring or Observability environment using Cloud Watch
-- [x]  Create indicators do CPU, Memory, Disco, and HTTP Request or for the Four Golden Signals (Latency, Traffic, Errors, and Saturation) -> done using Cloud Watch
+- [x]  Create indicators do CPU, Memory, Disco, and HTTP Request or for the Four Golden Signals (Latency, Traffic, Errors, and Saturation) using Cloud Watch
 
 ### Future improvements
 - [ ]  Provision resources using Terraform
