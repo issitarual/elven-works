@@ -99,7 +99,9 @@ resource "aws_instance" "wordpress-challenge-server-1" {
         wordpress_db_name=var.wordpress_db_name
         wordpress_db_username=var.wordpress_db_username
         wordpress_db_password=var.wordpress_db_password
-  }))
+      }
+    )
+  )
   tags = {
     Name = "wordpress_challenge-server-1"
   }
