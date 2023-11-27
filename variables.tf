@@ -71,6 +71,11 @@ variable "rds_db_username" {
   default     = "wordpress"
   sensitive   = true
 }
+variable "rds_db_name" {
+  type        = string
+  default     = "wordpress"
+  sensitive   = true
+}
 
 variable "rds_db_password" {
   type        = string

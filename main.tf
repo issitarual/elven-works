@@ -50,6 +50,7 @@ module "rds_wordpress" {
   source = "./rds-wordpress"
 
   rds_db_username           = var.rds_db_username
+  rds_db_name               = var.rds_db_name
   rds_db_password           = var.rds_db_password
   vpc_wordpress             = module.vpc_wordpress.vpc_wordpress
   subnets_wordpress_private = module.vpc_wordpress.subnets_wordpress_private

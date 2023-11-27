@@ -107,19 +107,19 @@ resource "aws_instance" "wordpress-challenge-server-1" {
   }
 }
 
-# Linux server 2
-resource "aws_instance" "wordpress-challenge-server-2" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
-  key_name = "wordpress-challenge"
-  subnet_id = var.subnet_wordpress.id
-  vpc_security_group_ids = [aws_security_group.allow_ssh.id]
-  associate_public_ip_address = true
+# # Linux server 2
+# resource "aws_instance" "wordpress-challenge-server-2" {
+#   ami           = data.aws_ami.ubuntu.id
+#   instance_type = "t2.micro"
+#   key_name = "wordpress-challenge"
+#   subnet_id = var.subnet_wordpress.id
+#   vpc_security_group_ids = [aws_security_group.allow_ssh.id]
+#   associate_public_ip_address = true
 
-  tags = {
-    Name = "wordpress_challenge-server-2"
-  }
-}
+#   tags = {
+#     Name = "wordpress_challenge-server-2"
+#   }
+# }
 
 # # Prometheus
 # resource "aws_instance" "prometheus" {

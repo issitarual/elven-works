@@ -22,6 +22,7 @@ resource "aws_db_instance" "wordpress_mysql" {
   engine                 = "mysql"
   engine_version         = "8.0.35"
   instance_class         = "db.t2.micro"
+  name                   = var.rds_db_name
   username               = var.rds_db_username
   password               = var.rds_db_password
   db_subnet_group_name   = aws_db_subnet_group.mysql.id
