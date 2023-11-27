@@ -55,13 +55,13 @@ variable "profile" {
 
 variable "access_key" {
   type = string
-  default = "AKIAZJJBBXZPAXTRJ57A"
+  default = "changeme"
   sensitive = true
 }
 
 variable "secret_key" {
   type = string
-  default = "wON0atpAbefgqJaFTRxDaLF+EgtA7EFnbVrRKmFe"
+  default = "changeme"
   sensitive = true
 }
 
