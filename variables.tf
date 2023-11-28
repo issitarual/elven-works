@@ -1,5 +1,4 @@
 # VPC variables
-
 variable "vpc_cidr" {
   type = string
   default = "10.132.0.0/16"
