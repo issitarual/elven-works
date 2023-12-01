@@ -2,7 +2,7 @@
 ### Description
 Create a server using WordPress on AWS in an automated way and perform Monitoring or Observability with Cloud Watch.
 ### Preview
-| WordPress      | Clloud Watch       |
+| WordPress      | Cloud Watch       |
 | -------------- | -------------- |
 | ![Captura de tela 2023-11-22 174538](https://github.com/issitarual/elven-works/assets/81389078/31dd2904-05b8-4101-82dc-59dd089317d0)     | ![Captura de tela 2023-11-22 174646](https://github.com/issitarual/elven-works/assets/81389078/e9015349-e5f2-4768-9e5a-bdd0788a7731)    |
 
